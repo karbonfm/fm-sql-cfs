@@ -1,0 +1,34 @@
+/**
+ * 
+ * get the fully qualified SQL Name of a Field
+ *
+ * @param {reference} field
+ *
+ * @returns {string} 
+ *
+ * @module fm-sql-cfs
+ * @see https://github.com/karbonfm/fm-sql-cfs
+ * 
+ * @history  2017-11-17, todd@geistinteractive.com
+ *
+ */
+
+
+Let(
+[
+
+
+
+q = "\"";
+fn = GetFieldName( field );
+fn = Case( fn = "?" ; field; fn);
+
+
+field =   q &  Substitute(  fn; "::" ; q & "." & q ) & q 
+
+
+];
+
+field
+
+)

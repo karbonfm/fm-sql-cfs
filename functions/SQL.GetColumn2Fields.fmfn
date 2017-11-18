@@ -1,0 +1,46 @@
+/**
+ * 
+ * get the values in a field using two WHERE field searches
+ *
+ * @param {reference} columnField
+ * @param {reference} whereField
+ * @param {string} whereValue
+ * @param {reference} whereField2
+ * @param {string} whereValue2
+ *
+ * @returns {string} the list of values in the field targeted with 'columnField'
+ *
+ * @module fm-sql-cfs
+ * @see https://github.com/karbonfm/fm-sql-cfs
+ * 
+ * @history  2017-11-17, todd@geistinteractive.com
+ *
+ */
+
+Let(
+[
+sql = SQL.GetColumn (columnField; whereField ; "?" ) ;
+
+sql = List(
+"SELECT ''|| " & SQL.GetFieldName ( columnField ) ;
+"FROM " & SQL.GetTableName ( whereField ) ;
+"WHERE " & SQL.GetFieldName ( whereField ) & "=?" ;
+"AND" ; 
+SQL.GetFieldName ( whereField2 ) & "=?" 
+)
+
+
+
+
+];
+
+
+ExecuteSQL (
+
+sql ; 
+
+"" ;"" ; whereValue; whereValue2
+
+) 
+
+)
